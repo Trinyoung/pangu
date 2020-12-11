@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-11 09:17:19
- * @LastEditTime: 2020-12-11 15:54:27
+ * @LastEditTime: 2020-12-11 18:26:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \pangu\server\base\baseController.ts
@@ -10,7 +10,6 @@
 import { ParameterizedContext } from 'koa';
 import { BaseService } from './baseService';
 import { BaseInterface } from './baseInterface';
-import { User } from '../user/userInterface';
 import { Logger } from '../../logger/config';
 import * as _ from 'lodash'
 export class BaseController<T extends BaseService<BaseInterface>>{
@@ -69,7 +68,6 @@ export class BaseController<T extends BaseService<BaseInterface>>{
     public async getListByPage(ctx: ParameterizedContext) {
         try {
             const params = Object.assign({ page: 1, limit: 10 }, ctx.query, ctx.params, ctx.request.body);
-            // const query = Object.assign({}, params, { limit: undefined, page: undefined });
             const query = _.omit(params, ['limit', 'page']);
             const result = await this.service.getListByPage(query, Number(params.limit), Number(params.page));
             return ctx.body = { code: '000', result };

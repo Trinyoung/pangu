@@ -1,13 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2020-11-30 09:03:52
- * @LastEditTime: 2020-12-11 15:51:20
+ * @LastEditTime: 2020-12-11 18:21:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \process2\src\server\tags\router.ts
  */
 import * as Router from 'koa-router';
-// import { userMiddleware } from '../../middleware/user/checkauth';
 import Controller from './controller';
 export default (router: Router) => {
     const controller = new Controller();
@@ -17,11 +16,4 @@ export default (router: Router) => {
     router.put('/xxxxs/:_id', controller.updateItem.bind(controller));
     router.post('/xxxxs', controller.create.bind(controller));
     router.delete('/xxxxs', controller.delete.bind(controller));
-    // router.post('/tags', controller.create.bind(controller));
-    // router.put('/tags/:_id', controller.updateItem.bind(controller)); // 
-    // router.get('/tags/list', controller.getListByPage.bind(controller));
-    // router.get('/tags/:_id', controller.getOne.bind(controller));
-    // router.delete('/tags/:_id', controller.delete.bind(controller));
-    // router.get('/tags', controller.getList.bind(controller));
-    // router.get('/tags/:createdBy/count', controller.getCount.bind(controller));
 }
