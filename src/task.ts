@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-11 08:56:55
- * @LastEditTime: 2020-12-11 19:50:45
+ * @LastEditTime: 2020-12-11 19:52:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \pangu\src\app.ts
@@ -38,7 +38,7 @@ export class handleFiles {
         text = text.replace(new RegExp('password', 'g'), sqlOption.password);
         text = text.replace(new RegExp('host', 'g'), sqlOption.host);
         text = text.replace(new RegExp('port', 'g'), sqlOption.port);
-        const fileStream = fs.createWriteStream(path.resolve(__dirname, `../output/server/db/${sqlOption.type}`));
+        const fileStream = fs.createWriteStream(path.resolve(__dirname, `../output/server/db/${sqlOption.type}.ts`));
         fileStream.on('open', () => {
             fileStream.write(text);
         });
