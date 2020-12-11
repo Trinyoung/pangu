@@ -1,16 +1,16 @@
 /*
  * @Author: your name
- * @Date: 2020-12-11 14:35:15
- * @LastEditTime: 2020-12-11 18:31:58
+ * @Date: 2020-12-11 18:31:11
+ * @LastEditTime: 2020-12-11 18:32:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \pangu\src\app.ts
+ * @FilePath: \pangu\src\server\app.ts
  */
 import * as Koa from 'koa';
 import * as Router from 'koa-router';
 import * as bodyParser from 'koa-bodyparser';
-import route from './server/router';
-import { Logger } from './server/logger/config';
+import route from './router';
+import { Logger } from './logger/config';
 // import * as mount from 'koa-mount';
 
 const app = new Koa();

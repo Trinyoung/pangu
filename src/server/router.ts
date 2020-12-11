@@ -9,7 +9,7 @@
 import * as Router from 'koa-router';
 // import userRouter from './server/user/router';
 // import articleRouter from './server/articles/router';
-import xxxxRouter from './server/xxxx/router';
+import xxxxRouter from './xxxx/router';
 
 export default (router: Router) => {
     xxxxRouter(router);

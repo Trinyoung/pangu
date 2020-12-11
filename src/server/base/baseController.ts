@@ -10,7 +10,7 @@
 import { ParameterizedContext } from 'koa';
 import { BaseService } from './baseService';
 import { BaseInterface } from './baseInterface';
-import { Logger } from '../../logger/config';
+import { Logger } from '../logger/config';
 import * as _ from 'lodash'
 export class BaseController<T extends BaseService<BaseInterface>>{
     constructor(public service: T) {
