@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-11 08:56:55
- * @LastEditTime: 2020-12-11 19:27:00
+ * @LastEditTime: 2020-12-11 19:50:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \pangu\src\app.ts
@@ -12,7 +12,7 @@ import * as path from 'path';
 
 
 export class handleFiles {
-    public init ({sqlType, libraryType, withLogger, withCache}, moduleNames?: string[]) {
+    public init ({sqlOption, libraryType, withLogger, withCache}, moduleNames?: string[]) {
         if (moduleNames && moduleNames.length > 0) {
             this.createModules(moduleNames);
         }
@@ -27,8 +27,23 @@ export class handleFiles {
         fs.copyFileSync('./server/base/baseController.ts', '../output/server/baseController.ts');
         fs.copyFileSync('./server/base/baseInterface.ts', '../output/server/baseInterface.ts');
         fs.copyFileSync('./server/base/baseService.ts', '../output/server/baseService.ts');
+
+        this.createDBFile(sqlOption);
     }
     
+    public createDBFile (sqlOption) {
+        const fileBuffer = fs.readFileSync(path.resolve(__dirname, `./server/db/${sqlOption.type}.ts`));
+        let text = fileBuffer.toString();
+        text = text.replace(new RegExp('username', 'g'), sqlOption.username);
+        text = text.replace(new RegExp('password', 'g'), sqlOption.password);
+        text = text.replace(new RegExp('host', 'g'), sqlOption.host);
+        text = text.replace(new RegExp('port', 'g'), sqlOption.port);
+        const fileStream = fs.createWriteStream(path.resolve(__dirname, `../output/server/db/${sqlOption.type}`));
+        fileStream.on('open', () => {
+            fileStream.write(text);
+        });
+    }
+
     public createModules(moduleNames: string[]) {
         for (let moduleName of moduleNames) {
             const modelFile = fs.readFileSync(path.resolve(__dirname, './server/xxxx/model.ts'));
