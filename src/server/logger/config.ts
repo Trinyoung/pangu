@@ -1,18 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2020-12-11 16:04:12
- * @LastEditTime: 2020-12-11 16:04:13
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-12-15 15:59:15
+ * @LastEditors: your name
  * @Description: In User Settings Edit
- * @FilePath: \pangu\src\logger\config.ts
- */
-/*
- * @Author: your name
- * @Date: 2020-08-10 15:52:25
- * @LastEditTime: 2020-11-27 14:45:54
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \process2\logger\config.ts
+ * @FilePath: \pangu\src\server\logger\config.ts
  */
 import * as log4js from 'log4js';
 
