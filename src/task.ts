@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-11 08:56:55
- * @LastEditTime: 2020-12-15 19:59:49
+ * @LastEditTime: 2020-12-15 20:30:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \pangu\src\app.ts
@@ -74,6 +74,7 @@ export class HandleFiles {
     private createFiles(buffer, moduleName, bussiness) {
         let text = buffer.toString();
         text = text.replace(/xxxx/g, moduleName);
+        text = text.replace(/Xxxx/g, moduleName.replace(moduleName[0], moduleName[0].toUpperCase()));
         const dir = fs.mkdirSync(path.resolve(__dirname, `../output/server/${moduleName}`), { recursive: true });
         const fileStream = fs.createWriteStream(path.resolve(__dirname, `../output/server/${moduleName}/${bussiness}.ts`));
         fileStream.on('open', () => {
@@ -91,7 +92,6 @@ export class HandleFiles {
         }
         const fileStream = fs.createWriteStream(path.resolve(__dirname, `../output/router.ts`));
         fileStream.on('open', () => {
-            console.log(text, '--------------------->')
             fileStream.write(text);
         });
         fileStream.on('error', (err) => { console.log(err) });
