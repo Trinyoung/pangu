@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2020-12-11 09:51:50
- * @LastEditTime: 2020-12-11 19:34:25
+ * @LastEditTime: 2020-12-15 19:07:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \pangu\src\db\mongo.ts
  */
 import * as mongoose from 'mongoose';
-const DB_URL = "mongodb://username:password@host:port/database";
+const DB_URL = "mongodb://username:password@host:PORT/database";
 let connectTimes = 0;
 const connect = function () {
 	connectTimes++;
