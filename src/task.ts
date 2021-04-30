@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-11 08:56:55
- * @LastEditTime: 2020-12-15 20:30:33
+ * @LastEditTime: 2021-04-30 10:03:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \pangu\src\app.ts
@@ -63,12 +63,14 @@ export class HandleFiles {
         this.appendRouter(appendRouterFile, moduleNames)
     }
     public createFile(from, to) {
-        const fileBuffer = fs.readFileSync(path.resolve(__dirname, from));
+        // const fileBuffer = fs.readFileSync(path.resolve(__dirname, from));
+        const readFileStream = fs.createReadStream(path.resolve(__dirname, from));
         const fileStream = fs.createWriteStream(path.resolve(__dirname, to));
-        let text = fileBuffer.toString();
-        fileStream.on('open', () => {
-            fileStream.write(text);
-        });
+        readFileStream.pipe(fileStream);
+        // let text = fileBuffer.toString();
+        // fileStream.on('open', () => {
+        //     fileStream.write(text);
+        // });
     }
 
     private createFiles(buffer, moduleName, bussiness) {
@@ -81,7 +83,7 @@ export class HandleFiles {
             fileStream.write(text)
         });
         fileStream.on('error', (err) => { console.log(err) });
-        fileStream.on('finish', () => { console.log(true) })
+        fileStream.on('finish', () => { console.log(true) });
     }
 
     private appendRouter(buffer, moduleNames) {
